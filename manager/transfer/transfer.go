@@ -134,6 +134,9 @@ func (self *TxHandleTask) StartHandleTransferTask(mana interfaces.WithdrawManage
 				if err != nil && retry < config.RetryLimit {
 					retry += 1
 					time.Sleep(time.Duration(retry*config.SleepTime) * time.Second)
+					if err != nil {
+						log.Errorf("SendTx failed: %s, retry: %d", err, retry)
+					}
 					continue
 				} else {
                     if self.TokenType == config.ERC20 {

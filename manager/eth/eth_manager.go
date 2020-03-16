@@ -180,7 +180,7 @@ func (self *EthManager) WithdrawToken(address string) error {
 		}
 		hash, err = self.SendTx(txHex)
 		if err != nil {
-			return fmt.Errorf("send tx failed, error:%s", err)
+			return fmt.Errorf("send tx failed, error:%s， nonce: %d", err, self.nonce)
 		}
 		boo := self.VerifyTx(hash)
 		if !boo {
