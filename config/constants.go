@@ -26,6 +26,6 @@ const (
 const (
 	RetryLimit        = 6
 	SleepTime         = 3
-	EthRetryLimit     = 12
+	EthRetryLimit     = 6
 	EthSleepTime      = 6
 )

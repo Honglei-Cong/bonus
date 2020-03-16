@@ -81,21 +81,21 @@ func (self *TxHandleTask) StartHandleTransferTask(mana interfaces.WithdrawManage
 						err, eventType, param.Address, txInfo.TxHash, byte(common.OneTransfering))
 				}
 
-				boo := mana.VerifyTx(txInfo.TxHash)
-				if boo {
-					log.Infof("Failed transactions revalidate success, txhash: %s", txInfo.TxHash)
-					ti, err := mana.GetTxTime(txInfo.TxHash)
-					if err != nil {
-						log.Errorf("GetTxTime error: %s", err)
-						continue
-					}
-					err = bonus_db.UpdateTxResult(eventType, param.Address, param.Id, common.TxSuccess, ti, "")
-					if err != nil {
-						log.Errorf("UpdateTxResult failed, txhash: %s, error: %s", txInfo.TxHash, err)
-					}
-					continue
-				}
-				log.Infof("Failed transactions revalidate failed, txhash: %s", txInfo.TxHash)
+				//boo := mana.VerifyTx(txInfo.TxHash)
+				//if boo {
+				//	log.Infof("Failed transactions revalidate success, txhash: %s", txInfo.TxHash)
+				//	ti, err := mana.GetTxTime(txInfo.TxHash)
+				//	if err != nil {
+				//		log.Errorf("GetTxTime error: %s", err)
+				//		continue
+				//	}
+				//	err = bonus_db.UpdateTxResult(eventType, param.Address, param.Id, common.TxSuccess, ti, "")
+				//	if err != nil {
+				//		log.Errorf("UpdateTxResult failed, txhash: %s, error: %s", txInfo.TxHash, err)
+				//	}
+				//	continue
+				//}
+				//log.Infof("Failed transactions revalidate failed, txhash: %s", txInfo.TxHash)
 			}
 			if txInfo != nil && txInfo.TxHex != "" {
 				txHex, err = common2.HexToBytes(txInfo.TxHex)
